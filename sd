@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in $(ls); do
+  if [[ -d "$i" ]]; then
+    cd "$i"
+    echo "${i} - $(ls -A | wc -l) items found"
+    cd ..
+  fi
+done

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+notefile="$HOME/notes.txt"
+SERVER="server name"
+
+
+if [[ "$#" -eq 0 ]]; then
+  ssh $SERVER 'cat notes'
+else
+  echo "$(date +%FT%H:%M)" "$@" >> "$notefile"
+  echo "$(date +%FT%H:%M)" "$@" | ssh $SERVER 'cat >> notes'
+fi

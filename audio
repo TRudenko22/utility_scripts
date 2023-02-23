@@ -1,0 +1,11 @@
+#!/bin/bash
+
+VOLUME=$1
+
+if [[ "$#" -gt 1 ]]; then
+  echo "too many args"
+elif [[ "$VOLUME" -gt 100 ]]; then
+  echo "volume greater than 100"
+fi
+
+amixer set Master "${VOLUME}%"
