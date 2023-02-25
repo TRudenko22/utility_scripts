@@ -1,0 +1,16 @@
+#!/bin/sh
+
+notefile="$HOME/notes.txt"
+
+if [[ -z "$NOTE_SERVER" ]]; then
+    echo "Error: No server connected"
+    echo "export NOTE_SERVER='user@your_server'"
+    exit 1
+fi
+
+if [[ "$#" -eq 0 ]]; then
+  ssh "$NOTE_SERVER" 'cat notes'
+else
+  echo "$(date +%FT%H:%M) -" "$@" >> "$notefile"
+  echo "$(date +%FT%H:%M) -" "$@" | ssh $NOTE_SERVER 'cat >> notes'
+fi
