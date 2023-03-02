@@ -1,0 +1,21 @@
+#!/bin/bash
+# Sets the brighness of laptop display <eDP-1>
+# 
+# Options:
+#  - high
+#  - mid
+#  - low
+
+LEVEL="$1"
+VALUE="0.7"
+
+case $LEVEL in
+  "high" )    VALUE="0.9"   ;;
+  "mid"  )    VALUE="0.6"   ;;
+  "low"  )    VALUE="0.4"   ;;
+  * )         VALUE="0.7"   ;;
+esac
+
+xrandr --output eDP-1 --brightness $VALUE
+
+

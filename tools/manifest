@@ -1,0 +1,14 @@
+#!/bin/bash
+
+FILE="$1"
+
+cat > "$FILE" <<EOF 
+apiVersion: 
+kind: 
+metadata:
+  name:
+  labels:
+spec:
+EOF
+
+vim "$FILE"
